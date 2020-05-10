@@ -1,0 +1,80 @@
+<html>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+   <body>
+
+    <h1>Mini NBA Players Sneakers List Display Web App</h1>
+
+
+    <form>
+        Click to display the collection of all players <br/>
+        <input type = "button" value = "Display all players" onclick="loadPlayers()">
+    </form>
+
+    <form>
+        <label for="player">Player No. </label><br>
+        <input id="playerid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br>
+        <input type="button" value="Display Player" onclick="loadPlayer()"></input>
+    </form>
+
+    <form>
+        <label for="player">Sneakers History of Player No. </label><br>
+        <input id="playersneakersid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br>
+        <input type="button" value="Display Player" onclick="loadPlayerSeakers()"></input>
+    </form>
+
+    <form>
+        <label for="player">Sneakers History of Player No. </label><br>
+        <input id="playersneakerid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br>
+        <label for="sneaker">Sneaker No. </label><br>
+        <input id="sneakerid" type="text" name="sneaker" value="1 - 4" pattern="[1-4]"><br>
+        <input type="button" value="Display Sneaker" onclick="loadPlayerSeaker()"></input>
+    </form>
+    
+    <div id="display"></div>
+
+    <script>
+        
+
+        function loadPlayers() {
+            $.ajax('http://127.0.0.1:8081/listPlayers', {
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                $('#display').text(JSON.stringify(data));
+            })
+
+        }
+
+        function loadPlayer() {
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playerid').val()-1),{
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                $('#display').text(JSON.stringify(data));
+            })
+        }
+
+        function loadPlayerSeakers() {
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakersid').val()-1)+'/sneakers',{
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                $('#display').text(JSON.stringify(data));
+            })
+        }
+        function loadPlayerSeaker() {
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakerid').val()-1)+'/sneakers/'+$('#sneakerid').val(),{
+                dataType: 'text'
+            }).done(function(data){
+                console.log(data);
+                $('#display').text(data);
+            })
+        }
+        </script>
+      
+   </body>
+</html>

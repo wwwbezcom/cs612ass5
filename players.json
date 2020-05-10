@@ -1,0 +1,121 @@
+{
+    "player0" : {
+        "name" : "Charles Barkley",
+        "team" : "Phoenix Suns",
+        "brand" : "Nike",
+        "sneakers": {
+            "1" : "Air Force Max CB", 
+            "2" : "Air Max2 CB", 
+            "3" : "Air Max CB32", 
+            "4" : "Barkley Posite Max"
+        }
+     },
+
+    "player1" : {
+       "name" : "Lebron James",
+       "team" : "LA Lakers",
+       "brand" : "Nike",
+       "sneakers": {
+        "1" : "LBJ 17", 
+        "2" : "Soldier 13", 
+        "3" : "Witness 4", 
+        "4" : "Ambassador 12"
+        }    
+    },
+    
+    "player2" : {
+       "name" : "Stephen Curry",
+       "team" : "GS Warriors",
+       "brand" : "Under Armour",
+       "sneakers": {
+        "1" : "SC 7", 
+        "2" : "Anatomix Spawn", 
+        "3" : "Clutchfit Drive", 
+        "4" : "Hyperfuse"
+        }   
+    },
+    
+    "player3" : {
+       "name" : "James Harden",
+       "team" : "Houston Rockets",
+       "brand" : "Adidas",
+       "sneakers": {
+        "1" : "Harden Vol. 4", 
+        "2" : "Harden B/E", 
+        "3" : "Hyperchase", 
+        "4" : "Zoom Crusader"
+        }   
+    },
+
+    "player4"  : {
+        "name" : "Fred Vanvleet",
+        "team" : "Toronto Raptors   ",
+        "brand" : "And1",
+        "sneakers": {
+            "1" : "Attack 2", 
+            "2" : "Tai Chi", 
+            "3" : "Harden Vol. 3", 
+            "4" : "Dame 4"
+        }   
+    },
+     
+    "player5" : {
+        "name" : "Anthony Davis",
+        "team" : "LA Lakers",
+        "brand" : "Nike",
+        "sneakers": {
+            "1" : "Zoom Kobe 4 Protro", 
+            "2" : "Kobe AD Exodus", 
+            "3" : "Air Force Max", 
+            "4" : "Air Max Audacity"
+        }   
+    },
+    
+    "player6" : {
+        "name" : "Deron Williams",
+        "team" : "Brooklyn Nets",
+        "brand" : "Nike",
+        "sneakers": {
+            "1" : "Kyrie 3", 
+            "2" : "Air Penny V 5", 
+            "3" : "Hyperfuse", 
+            "4" : "Zoom BB"
+        }  
+    },
+
+    "player7"  : {
+        "name" : "Giannis Antetokounmpo",
+        "team" : "Milwaukee Bucks ",
+        "brand" : "Nike",
+        "sneakers": {
+            "1" : "Zoom Freak 2", 
+            "2" : "Kobe AD Exodus",
+            "3" : "Kobe AD Mid", 
+            "4" : "Kobe X"
+        }  
+    },
+    
+    "player8" : {
+        "name" : "John Wall",
+        "team" : "Washington Wizzards",
+        "brand" : "Adidas",
+        "sneakers": {
+            "1" : "Crazy BYW X", 
+            "2" : "J Wall 2", 
+            "3" : "Crazyquick",
+            "4" : "Crazyexplosive"
+        }  
+    },
+    
+    "player9" : {
+        "name" : "Kobe Bryant",
+        "team" : "LA Lakers",
+        "brand" : "Nike",
+        "sneakers": {
+            "1" : "Kobe 11", 
+            "2" : "Mamba Fury", 
+            "3" : "Mamba Focus", 
+            "4" : "Venomenon"
+        }   
+    }
+}
