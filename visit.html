@@ -1,0 +1,114 @@
+<html>
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <style>
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        .thead th{
+            text-align: center;
+        }
+    </style>
+
+   <body>
+
+    <h1>Mini NBA Players Sneakers List Display Web App</h1>
+
+
+    <form>
+        Click to display the collection of all players <br/><br/>
+        <input type = "button" value = "Display all players" onclick="loadPlayers()">
+    </form>
+
+    <form>
+        <label for="player">Player No. </label>
+        <input id="playerid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br><br>
+        <input type="button" value="Display Player" onclick="loadPlayer()"></input>
+    </form>
+
+    <form>
+        <label for="player">Sneakers History of Player No. </label>
+        <input id="playersneakersid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br><br>
+        <input type="button" value="Display Player" onclick="loadPlayerSeakers()"></input>
+    </form>
+
+    <form>
+        <label for="player">Sneakers History of Player No. </label>
+        <input id="playersneakerid" type="text" name="player" value="1 - 10" pattern="[1-10]"><br><br>
+        <label for="sneaker">Sneaker No. </label>
+        <input id="sneakerid" type="text" name="sneaker" value="1 - 4" pattern="[1-4]"><br><br>
+        <input type="button" value="Display Sneaker" onclick="loadPlayerSeaker()"></input>
+    </form>
+    
+    <div id="display">
+        <table style="width:100%; border-collapse:collapse">
+            <thead class="thead">
+              <th>Player No.</th>
+              <th>Name</th>
+              <th>Team</th>
+              <th>Brand</th>
+              <th colspan="4">Sneakers</th>
+            </thead>
+            <tbody id="show"></tbody>
+          </table>
+    </div>
+
+    <script>
+        
+
+        function loadPlayers() {
+            $('#show').html('');
+            $.ajax('http://127.0.0.1:8081/listPlayers', {
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                for (var player in data){
+                    $('#show').append('<tr><td>' + player[6] +'</td><td>' + data[player].name + '</td><td>' + data[player].team +'</td><td>' + data[player].brand +'</td><td>' + data[player].sneakers[1] +'</td><td>' + data[player].sneakers[2]+ '</td><td>' + data[player].sneakers[3] +'</td><td>' + data[player].sneakers[4] +'</td></tr>');
+                }
+            })
+
+        }
+
+        function loadPlayer() {
+            $('#show').html('');
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playerid').val()-1),{
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                $('#show').append('<tr><td>' + $('#playerid').val() +'</td><td>' + data.name + '</td><td>' + data.team +'</td><td>' + data.brand +'</td><td>' + data.sneakers[1] +'</td><td>' + data.sneakers[2]+ '</td><td>' + data.sneakers[3] +'</td><td>' + data.sneakers[4] +'</td></tr>');
+  
+            })
+        }
+
+        function loadPlayerSeakers() {
+            $('#show').html('');
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakersid').val()-1)+'/sneakers',{
+                dataType: 'JSON'
+            }).done(function(data){
+                console.log(data);
+                $('#show').append('<tr><td>' + $('#playersneakersid').val() +'</td><td></td><td></td><td></td><td>' + data[1] +'</td><td>' + data[2]+ '</td><td>' + data[3] +'</td><td>' + data[4] +'</td></tr>');
+            })
+        }
+        function loadPlayerSeaker() {
+            $('#show').html('');
+            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakerid').val()-1)+'/sneakers/'+$('#sneakerid').val(),{
+                dataType: 'text'
+            }).done(function(data){
+                console.log(data);
+                $('#show').append('<tr><td>' + $('#playersneakerid').val() +'</td><td></td><td></td><td></td><td>Sneaker No. ' + $('#sneakerid').val()+': </td><td>' + data + '</td><td></td><td></td></tr>');
+            })
+        }
+        </script>
+      
+   </body>
+</html>

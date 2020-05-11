@@ -15,40 +15,114 @@ app.get('/', function (req, res) {
 
 app.get('/listPlayers', function (req, res) {
     fs.readFile( __dirname + "/" + "players.json", 'utf8', function (err, data) {
-        console.log( data );
-        res.end( data );
+        if (err){
+            console.log(err);
+            res.writeHead(404,{'Content-Type':'text/html'})
+
+        } else{
+            console.log( data );
+            res.end( data );
+            }
      });
 })
 
 app.get('/listPlayers/:id', function (req, res) {
     fs.readFile( __dirname + "/" + "players.json", 'utf8', function (err, data) {
-        var players = JSON.parse(data);
-        var player = players["player"+req.params.id];
-        console.log(player);
-        res.end( JSON.stringify(player) );
+        if (err){
+            console.log(err);
+            res.writeHead(404,{'Content-Type':'text/html'})
+
+        } else{
+        var fail = { 
+            "name" : "/",
+            "team" : "/",
+            "brand" : "/",
+            "sneakers": {
+             "1" : "/", 
+             "2" : "/", 
+             "3" : "/", 
+             "4" : "/"
+             }    
+            }
+            var players = JSON.parse(data);
+            var player = players["player"+req.params.id];
+            if (req.params.id<0 || req.params.id>9){
+                res.end(JSON.stringify(fail));
+            } else {
+                console.log(player);
+                res.end( JSON.stringify(player) );
+            }
+        }
      });
 })
 
 app.get('/listPlayers/:id/sneakers', function (req, res) {
     fs.readFile( __dirname + "/" + "players.json", 'utf8', function (err, data) {
-        var players = JSON.parse(data);
-        var player = players["player"+req.params.id];
-        console.log(player);
-        var sneakers = player.sneakers;
-        console.log(sneakers);
-        res.end( JSON.stringify(sneakers) );
+        if (err){
+            console.log(err);
+            res.writeHead(404,{'Content-Type':'text/html'})
+
+        } else{
+            var fail = { 
+                "name" : "/",
+                "team" : "/",
+                "brand" : "/",
+                "sneakers": {
+                 "1" : "/", 
+                 "2" : "/", 
+                 "3" : "/", 
+                 "4" : "/"
+                 }    
+                }
+            var players = JSON.parse(data);
+            var player = players["player"+req.params.id];
+            if (req.params.id<0 || req.params.id>9){
+                var sneakers = fail.sneakers;
+                res.end( JSON.stringify(sneakers) );
+            } else {
+                console.log(player);
+                var sneakers = player.sneakers;
+                console.log(sneakers);
+                res.end( JSON.stringify(sneakers) );
+             }
+        }
      });
 })
 
 app.get('/listPlayers/:id/sneakers/:sid', function (req, res) {
     fs.readFile( __dirname + "/" + "players.json", 'utf8', function (err, data) {
-        var players = JSON.parse(data);
-        var player = players["player"+req.params.id];
-        console.log(player);
-        var sneakers = player.sneakers;
-        console.log(sneakers);
-        var sneaker = sneakers[req.params.sid];
-        res.end( sneaker );
+        if (err){
+            console.log(err);
+            res.writeHead(404,{'Content-Type':'text/html'})
+
+        } else{
+            var fail = { 
+                "name" : "/",
+                "team" : "/",
+                "brand" : "/",
+                "sneakers": {
+                 "1" : "/", 
+                 "2" : "/", 
+                 "3" : "/", 
+                 "4" : "/"
+                 }    
+                }
+            var players = JSON.parse(data);
+            var player = players["player"+req.params.id];
+            if (req.params.id<0 || req.params.id>9){
+                res.end( 'playerId out of range' );
+            } else {
+                console.log(player);
+                var sneakers = player.sneakers;
+                console.log(sneakers);
+                var sneaker = sneakers[req.params.sid];
+                if (req.params.sid<0 || req.params.sid>4){
+                    res.end('sneakerId out of range');
+                } else{
+                    res.end( sneaker );
+                }
+                }
+        }
      });
 })
 
