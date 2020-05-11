@@ -68,7 +68,7 @@
 
         function loadPlayers() {
             $('#show').html('');
-            $.ajax('http://127.0.0.1:8081/listPlayers', {
+            $.ajax('http://127.0.0.1:8080/listPlayers', {
                 dataType: 'JSON'
             }).done(function(data){
                 console.log(data);
@@ -81,7 +81,7 @@
 
         function loadPlayer() {
             $('#show').html('');
-            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playerid').val()-1),{
+            $.ajax('http://127.0.0.1:8080/listPlayers/'+($('#playerid').val()-1),{
                 dataType: 'JSON'
             }).done(function(data){
                 console.log(data);
@@ -92,7 +92,7 @@
 
         function loadPlayerSeakers() {
             $('#show').html('');
-            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakersid').val()-1)+'/sneakers',{
+            $.ajax('http://127.0.0.1:8080/listPlayers/'+($('#playersneakersid').val()-1)+'/sneakers',{
                 dataType: 'JSON'
             }).done(function(data){
                 console.log(data);
@@ -101,7 +101,7 @@
         }
         function loadPlayerSeaker() {
             $('#show').html('');
-            $.ajax('http://127.0.0.1:8081/listPlayers/'+($('#playersneakerid').val()-1)+'/sneakers/'+$('#sneakerid').val(),{
+            $.ajax('http://127.0.0.1:8080/listPlayers/'+($('#playersneakerid').val()-1)+'/sneakers/'+$('#sneakerid').val(),{
                 dataType: 'text'
             }).done(function(data){
                 console.log(data);

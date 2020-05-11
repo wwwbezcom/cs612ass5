@@ -34,7 +34,7 @@ app.get('/listPlayers/:id', function (req, res) {
 
         } else{
         var fail = { 
-            "name" : "/",
+            "name" : "playerId out of range",
             "team" : "/",
             "brand" : "/",
             "sneakers": {
@@ -68,7 +68,7 @@ app.get('/listPlayers/:id/sneakers', function (req, res) {
                 "team" : "/",
                 "brand" : "/",
                 "sneakers": {
-                 "1" : "/", 
+                 "1" : "playerId out of range", 
                  "2" : "/", 
                  "3" : "/", 
                  "4" : "/"
@@ -126,7 +126,7 @@ app.get('/listPlayers/:id/sneakers/:sid', function (req, res) {
      });
 })
 
-var server = app.listen(8081, function () {
+var server = app.listen(8080, function () {
    var host = server.address().address
    var port = server.address().port
    
