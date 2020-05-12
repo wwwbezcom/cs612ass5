@@ -15,3 +15,4 @@ To run it:
 6. open visit.html in browser
 7. use it
 
+* Need to stop grammerly extension if there is one in the chrome browser or it will trigger the CORS restriction wierdly
